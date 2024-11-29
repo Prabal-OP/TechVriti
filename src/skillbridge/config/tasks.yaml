@@ -1,0 +1,26 @@
+summarization_task:
+  description: >
+    Analyze the provided resume content and create a concise summary. Ensure the output is clear and well-structured.
+  expected_output: >
+    The output should only contain skills, projects, work experience and achivements in a structured and concise manner. Do not mention anything other than what I have asked in expected output part.
+  agent: resume_summarizer
+
+scraping_task:
+  description: >
+    Extract relevant information about the job role at the specified company. This includes details such as job requirements, employee reviews, interview experiences, and any other information that can provide insights into the role and the company culture.
+  expected_output: >
+    The output should include the following structured information:
+    1. Job Description: Key responsibilities and expectations for the role.
+    2. Requirements: Essential skills and qualifications needed for the role.
+    3. Employee Reviews: Insights into the work culture from employee reviews (if available).
+    4. Interview Experiences: Any relevant feedback or experiences shared by current or past employees about the interview process.
+    5. Other relevant insights: Any additional information such as salary expectations, growth opportunities, and workplace environment.
+    Ensure the information is well-structured, concise, and focused on the aspects mentioned above. Do not include any extraneous details or unrelated information.
+  agent: web_scraper
+
+guidance_task:
+  description: >
+    Analyze the user's current skillset, and conduct a thorough evaluation of the gaps between their existing skills and the requirements of the desired role, {desired_role}, at {desired_company}. Ensure the analysis is aligned with the job market trends and expectations of 2024, highlighting any interesting and relevant findings about the skills, experiences, or qualifications required for the role. Present clear and actionable insights tailored to bridge these gaps effectively. For the comparision make use of web_scraper and resume_summarizer events
+  expected_output: >
+    Mention gaps in points and also mention tech stack to learn with approximate time required to learn them
+  agent: strategist
