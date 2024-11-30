@@ -42,7 +42,7 @@ def main():
             # Run the Skillbridge crew
             try:
                 Skillbridge().crew().kickoff(inputs=inputs)
-                st.success("Processing complete! Check the output files.")
+                st.success("Succesfull")
             except Exception as e:
                 st.error(f"An error occurred while running the Skillbridge crew: {e}")
 

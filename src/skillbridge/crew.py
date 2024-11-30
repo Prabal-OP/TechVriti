@@ -1,8 +1,13 @@
-from crewai import Agent, Crew, Process, Task
+from crewai import Agent, Crew, Process, Task, LLM
 from crewai.project import CrewBase, agent, crew, task, before_kickoff, after_kickoff
 from skillbridge.tools.PDFReader import PDFReader
 from crewai_tools import SerperDevTool
+import os
 
+llm = LLM(
+    model="gemini/gemini-1.5-flash",
+    api_key="AIzaSyBfdNcouDXMkGsGzHESIO_hoAlvVLzZlMA"
+)
 
 # Check our tools documentations for more information on how to use them
 # from crewai_tools import SerperDevTool
@@ -31,7 +36,8 @@ class Skillbridge():
 	def resume_summarizer(self):
 		return Agent(
 			config=self.agents_config['resume_summarizer'],
-			verbose=True
+			verbose=True,
+			llm= llm
 		)
 
 	@task
@@ -48,11 +54,13 @@ class Skillbridge():
 	def web_scraper(self):
 		return Agent(
 			config= self.agents_config['web_scraper'],
-			verbose=True
+			verbose=True,
+			llm=llm
 		)
 	
 	@task
 	def scrapping(self):
+		os.environ['SERPER_API_KEY'] = 'b3197a6a1d8c22fcde3036c2f4a46f02fe81a86c'
 		tool = SerperDevTool(search_url="https://google.serper.dev/search")
 		return Task(
 			config= self.tasks_config['scraping_task'],
@@ -65,7 +73,8 @@ class Skillbridge():
 	def strategist(self) -> Agent:
 		return Agent(
 			config=self.agents_config['strategist'],
-			verbose=True
+			verbose=True,
+			llm=llm
 		)
 
 
