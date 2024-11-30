@@ -61,7 +61,7 @@ class Skillbridge():
 	@task
 	def scrapping(self):
 		os.environ['SERPER_API_KEY'] = 'b3197a6a1d8c22fcde3036c2f4a46f02fe81a86c'
-		tool = SerperDevTool(search_url="https://google.serper.dev/search")
+		tool = SerperDevTool(search_url="https://google.serper.dev/search", n_results= 15)
 		return Task(
 			config= self.tasks_config['scraping_task'],
 			output_file='outputs/output2.md',

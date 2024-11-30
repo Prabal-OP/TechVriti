@@ -15,7 +15,7 @@ scraping_task:
     3. Employee Reviews: Insights into the work culture from employee reviews (if available).
     4. Interview Experiences: Any relevant feedback or experiences shared by current or past employees about the interview process.
     5. Other relevant insights: Any additional information such as salary expectations, growth opportunities, and workplace environment.
-    Ensure the information is well-structured, concise, and focused on the aspects mentioned above. Do not include any extraneous details or unrelated information.
+    Ensure the information is well-structured, detailed, and focused on the aspects mentioned above. Do not include any extraneous details or unrelated information.
   agent: web_scraper
 
 guidance_task:
